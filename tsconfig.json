@@ -1,0 +1,10 @@
+{
+	"compilerOptions": {
+		"target": "es6", //the js output from the compiler
+		"module": "commonjs",
+		"rootDir": "./src", //where the ts code is going to leave
+		"outDir": "./build",
+		"esModuleInterop": true,
+		"strict": true //to strictly check for types
+	}
+}
