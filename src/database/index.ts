@@ -1,8 +1,8 @@
 import { MongoClient } from 'mongodb';
 
-import { Database } from '../lib/types';
+import { Database, Booking, Listing, User } from '../lib/types';
 
-const url = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@${process.env.DB_CLUSTER}.rwksy.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`;
+const url = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@${process.env.DB_CLUSTER}.sma3w.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`;
 
 export const connectDatabase = async (): Promise<Database> => {
 	const client = await MongoClient.connect(url, { useUnifiedTopology: true, useNewUrlParser: true });
@@ -10,6 +10,8 @@ export const connectDatabase = async (): Promise<Database> => {
 	const db = client.db('tinyhouse_main');
 
 	return {
-		listings: db.collection('test_listings'),
+		bookings: db.collection<Booking>('bookings'),
+		listings: db.collection<Listing>('listings'),
+		users: db.collection<User>('users'),
 	};
 };
